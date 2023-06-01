@@ -32,12 +32,12 @@ export interface SpanAPI {
   addEvent(
     name: string,
     time: Timestamp,
-    attributes?: SpanEvent["attributes"],
+    attributes?: SpanEvent["attributes"]
   ): void;
   recordException(exception: Error, attributes?: SpanEvent["attributes"]): void;
   setStatus(
     code: SpanStatus["code"],
-    message?: SpanStatus["description"],
+    message?: SpanStatus["description"]
   ): void;
   updateName(name: string): void;
   endSpan(endTime?: Timestamp): void;
