@@ -1,5 +1,4 @@
-import { Attribute } from "./deps.ts";
-import { AttributeCollection } from "./deps.ts";
+import { Attribute, AttributeCollection } from "./deps.ts";
 import { SpanContext } from "./span-context.ts";
 import { SpanEvent } from "./span-event.ts";
 import { SpanKind } from "./span-kind.ts";
@@ -9,6 +8,10 @@ import { Timestamp } from "./types.ts";
 
 export class SpanAttributes extends AttributeCollection {}
 
+/**
+ * A Span represents a single operation within a Trace.
+ * This is described at https://opentelemetry.io/docs/specs/otel/trace/api/#span
+ */
 export interface SpanAPI {
   readonly name: string;
   readonly spanContext: SpanContext;
@@ -29,12 +32,12 @@ export interface SpanAPI {
   addEvent(
     name: string,
     time: Timestamp,
-    attributes?: SpanEvent["attributes"]
+    attributes?: SpanEvent["attributes"],
   ): void;
   recordException(exception: Error, attributes?: SpanEvent["attributes"]): void;
   setStatus(
     code: SpanStatus["code"],
-    message?: SpanStatus["description"]
+    message?: SpanStatus["description"],
   ): void;
   updateName(name: string): void;
   endSpan(endTime?: Timestamp): void;
