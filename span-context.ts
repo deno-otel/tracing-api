@@ -8,6 +8,12 @@ export interface SpanContextAPI
   readonly spanId: TraceContext["parentId"];
   readonly isValid: boolean;
   readonly isRemote: boolean;
-  getTraceId(format: "hex" | "bin"): string;
-  getSpanId(format: "hex" | "bin"): string;
+  getTraceId(format: "hex"): string;
+  getTraceId(format: "bin"): Uint8Array;
+  getTraceId(): string;
+  getTraceId(format: "hex" | "bin"): Uint8Array | string;
+  getSpanId(format: "hex"): string;
+  getSpanId(format: "bin"): Uint8Array;
+  getSpanId(): string;
+  getSpanId(format: "hex" | "bin"): Uint8Array | string;
 }
