@@ -1,5 +1,5 @@
 import { Attribute, AttributeCollection } from "./deps.ts";
-import { SpanContext } from "./span-context.ts";
+import { SpanContextAPI } from "./span-context.ts";
 import { SpanEvent } from "./span-event.ts";
 import { SpanKind } from "./span-kind.ts";
 import { SpanLink } from "./span-link.ts";
@@ -14,8 +14,8 @@ export class SpanAttributes extends AttributeCollection {}
  */
 export interface SpanAPI {
   readonly name: string;
-  readonly spanContext: SpanContext;
-  readonly parent: SpanAPI | SpanContext | null;
+  readonly spanContext: SpanContextAPI;
+  readonly parent: SpanAPI | SpanContextAPI | null;
   readonly spanKind: SpanKind;
   readonly start: Timestamp;
   readonly end: Timestamp | null;
@@ -25,10 +25,13 @@ export interface SpanAPI {
   readonly status: SpanStatus;
   readonly isRecording: boolean;
 
-  getSpanContext(): SpanContext;
+  getSpanContext(): SpanContextAPI;
   setAttribute(key: string, value: unknown): void;
   setAttributes(attributes: Attribute[]): void;
-  addLink(spanContext: SpanContext, attributes?: SpanLink["attributes"]): void;
+  addLink(
+    spanContext: SpanContextAPI,
+    attributes?: SpanLink["attributes"]
+  ): void;
   addEvent(
     name: string,
     time: Timestamp,
