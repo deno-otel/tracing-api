@@ -1,4 +1,4 @@
-import { TraceFlags, getEmptyTraceState } from "./deps.ts";
+import { getEmptyTraceState, TraceFlags } from "./deps.ts";
 import { assertEquals, assertExists, describe, it } from "./dev_deps.ts";
 import { createSpanContext } from "./span-context.ts";
 
@@ -17,7 +17,7 @@ describe("createSpanContext", () => {
     assertEquals(spanContext.traceFlags, TraceFlags.NONE);
     assertEquals(
       spanContext.getTraceId("hex"),
-      "00000000000000000000000000000000"
+      "00000000000000000000000000000000",
     );
     assertEquals(spanContext.getSpanId("hex"), "0000000000000000");
   });
