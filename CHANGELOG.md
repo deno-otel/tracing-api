@@ -1,3 +1,14 @@
+## v4.0.0 (2023-06-04)
+
+### BREAKING CHANGE
+
+- Fixes #1; this changes SpanAPI so will likely break dependent code
+
+### Fix
+
+- **SpanContext**: move SpanContext creation into the API
+- **SpanAPI**: make SpanAPI write-only
+
 ## v3.0.0 (2023-06-04)
 
 ## v2.2.2 (2023-06-04)
