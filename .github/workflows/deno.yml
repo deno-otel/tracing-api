@@ -18,7 +18,7 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
@@ -39,3 +39,6 @@ jobs:
         
       - name: Run Check
         run: deno check *.ts
+
+      - name: Run tests
+        run: deno test
