@@ -1,10 +1,10 @@
-import { AttributeCollection, ContextAPI } from "./deps.ts";
+import { Attributes, ContextAPI } from "./deps.ts";
 import { SpanAPI } from "./span-api.ts";
 
 export interface TracerOptions {
   version?: string;
   schema_url?: string;
-  attributes?: AttributeCollection;
+  attributes?: Attributes;
 }
 
 export interface TracerAPI {
